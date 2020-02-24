@@ -65,7 +65,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            @guest
                 <div class="top-right links">
                     <a href="{{ url('/home') }}">Home</a>
                     <a href="{{ route('login') }}">Login</a>
@@ -73,6 +73,11 @@
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}">Register</a>
                     @endif
+                </div>
+            @else
+                <div class="top-right links">
+                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ route('admin_dashboard') }}">Admin</a>
                 </div>
             @endif
 

@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+  @if ($message = Session::get('warning'))
+    <div class="alert alert-warning mb-4 alert-dismissible fade show font-weight-bold" role="alert">
+      <i class="fas fa-exclamation mr-2"></i>
+      {{ $message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  @endif
   <section class="sect text-center">
     <h1 class="font-weight-bolder mb-3">Our Goal</h1>
     <p>

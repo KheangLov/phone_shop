@@ -37,9 +37,7 @@
                         <th scope="col">Avatar</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
                         <th scope="col">Role</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -69,13 +67,7 @@
                                     {{ $user->email }}
                                 </td>
                             @endif
-                            <td>{{ $user->phone }}</td>
                             <td>{{ $user->role->name }}</td>
-                            <td>
-                                <span class="badge badge-custom{{ ($user->status === 'active') ? ' badge-success' : (($user->status === 'inactive') ? ' badge-danger' : ' badge-warning' ) }}">
-                                    {{ $user->status }}
-                                </span>
-                            </td>
                             <td>
                                 <a href="{{ route('user_edit', ['id' => $user->id]) }}" class="btn-action btn-edit" data-toggle="tooltip" data-placement="bottom" title="Edit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3 h-5 w-5 mr-4 hover:text-primary cursor-pointer">

@@ -17,7 +17,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-white">
+<body style="background-color: #f5f5f5;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
@@ -64,7 +64,7 @@
             @yield('content')
         </main>
 
-        <footer class="footer border-top">
+        <footer class="footer border-top bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -99,7 +99,7 @@
                 </div>
             </div>
         </footer>
-        <div class="border-top">
+        <div class="border-top bg-white">
             <div class="container">
                 <div class="d-flex bd-highlight">
                     <div class="p-2 bd-highlight"></div>
@@ -110,7 +110,7 @@
                             <a class="p-2 bd-highlight" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        <a class="ml-auto p-2 bd-highlight">Admin</a>
+                        <a href="{{ route('admin_dashboard') }}" class="ml-auto p-2 bd-highlight">Admin</a>
 
                     {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}"

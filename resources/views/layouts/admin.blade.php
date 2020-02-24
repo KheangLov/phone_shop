@@ -31,9 +31,8 @@
     <div id="admin" class="d-none">
 
         <aside id="sidebar" class="sidebar">
-            <a href="{{ route('admin_dashboard') }}" class="sidebar-header mb-3">
-                <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="logo" id="side-header-img" style="height: 36px; margin-bottom: 20px;">
-                <span id="side-header" class="header-title">{{ config('app.name', 'Laravel Admin') }}</span>
+            <a href="{{ route('admin_dashboard') }}" class="sidebar-header">
+                <span id="side-header" class="header-title font-weight-bolder">{{ config('app.name', 'Laravel Admin') }}</span>
             </a>
             <a href="{{ route('admin_dashboard') }}" class="sidebar-link">
                 <div class="inner-link{{ (request()->is('admin')) ? ' active' : '' }}">
@@ -59,6 +58,17 @@
                     </div>
                 </a>
             @endif
+            <a href="{{ route('product') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/product') || request()->is('admin/product/*') || request()->is('admin/images') || request()->is('admin/images/*')) ? ' active' : '' }}">
+                    <span class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail ">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </span>
+                    <span class="link-text">Emails</span>
+                </div>
+            </a>
             <a href="{{ route('category.index') }}" class="sidebar-link">
                 <div class="inner-link{{ (request()->is('admin/category') || request()->is('admin/category/*') || request()->is('admin/sub-category') || request()->is('admin/sub-category/*')) ? ' active' : '' }}">
                     <span class="link-icon">
@@ -75,7 +85,7 @@
                 </div>
             </a>
             <a href="{{ route('product') }}" class="sidebar-link">
-                <div class="inner-link{{ (request()->is('admin/product') || request()->is('admin/product/*')) ? ' active' : '' }}">
+                <div class="inner-link{{ (request()->is('admin/product') || request()->is('admin/product/*') || request()->is('admin/images') || request()->is('admin/images/*')) ? ' active' : '' }}">
                     <span class="link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive">
                             <polyline points="21 8 21 21 3 21 3 8"></polyline>
@@ -84,19 +94,6 @@
                         </svg>
                     </span>
                     <span class="link-text">Products</span>
-                </div>
-            </a>
-            <a href="{{ route('product_variant') }}" class="sidebar-link">
-                <div class="inner-link{{ (request()->is('admin/product-variant') || request()->is('admin/product-variant/*')) ? ' active' : '' }}">
-                    <span class="link-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package ">
-                            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </span>
-                    <span class="link-text">Product-Variants</span>
                 </div>
             </a>
         </aside>
@@ -121,10 +118,6 @@
                                     Users
                                 @elseif (request()->is('admin/category') || request()->is('admin/category/*'))
                                     Categories
-                                @elseif (request()->is('admin/sub-category') || request()->is('admin/sub-category/*'))
-                                    Sub-Categories
-                                @elseif (request()->is('admin/product-variant') || request()->is('admin/product-variant/*'))
-                                    Product-Variant
                                 @else
                                     Dashboard
                                 @endif
@@ -139,9 +132,6 @@
                             <div class="current-user text-right">
                                 <span class="user-name d-block">
                                     {{ Auth::user()->name }}
-                                    <small class="user-status {{ (Auth::user()->status === 'active') ? 'text-success' : ((Auth::user()->status === 'inactive') ? 'text-danger' : 'text-warning') }}">
-                                        {{ Auth::user()->status }}
-                                    </small>
                                 </span>
                             </div>
                         </li>
@@ -197,6 +187,8 @@
             </footer>
         </div>
     </div>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>
