@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+require('slick-carousel');
+require('image-picker');
 
 window.Vue = require('vue');
 

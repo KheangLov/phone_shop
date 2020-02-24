@@ -4,8 +4,43 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8771ff16b714f22ae3c210f7df47cf2",
+    "content-hash": "b91c2870727faa7df2955be7a3fe94de",
     "packages": [
+        {
+            "name": "components/font-awesome",
+            "version": "5.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/font-awesome.git",
+                "reference": "f033e952d0e20684443c0466045deae61fd4e733"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/font-awesome/zipball/f033e952d0e20684443c0466045deae61fd4e733",
+                "reference": "f033e952d0e20684443c0466045deae61fd4e733",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "styles": [
+                        "css/all.css"
+                    ],
+                    "files": [
+                        "css/all.min.css",
+                        "webfonts/*"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "MIT",
+                "OFL-1.1"
+            ],
+            "description": "Font Awesome, the iconic SVG, font, and CSS framework.",
+            "time": "2020-02-05T15:33:46+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -1514,6 +1549,35 @@
             "time": "2020-02-21T04:36:14+00:00"
         },
         {
+            "name": "soerenkroell/composer-slick",
+            "version": "1.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kroell/composer-slick.git",
+                "reference": "d66587b85aff3d004ca5caf7ce7d605f72f2ae39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kroell/composer-slick/zipball/d66587b85aff3d004ca5caf7ce7d605f72f2ae39",
+                "reference": "d66587b85aff3d004ca5caf7ce7d605f72f2ae39",
+                "shasum": ""
+            },
+            "type": "component",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ken Wheeler",
+                    "email": "ken_wheeler@me.com"
+                }
+            ],
+            "description": "A composer package for the last carousel you'll ever need",
+            "homepage": "https://github.com/kenwheeler/slick",
+            "time": "2015-07-03T17:24:43+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.3",
             "source": {
@@ -2991,6 +3055,64 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2019-10-24T08:53:34+00:00"
+        },
+        {
+            "name": "vkovic/laravel-commando",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vkovic/laravel-commando.git",
+                "reference": "eb8e7bd3e8f0a4e8bc691b400d753a6ce7ddc963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vkovic/laravel-commando/zipball/eb8e7bd3e8f0a4e8bc691b400d753a6ce7ddc963",
+                "reference": "eb8e7bd3e8f0a4e8bc691b400d753a6ce7ddc963",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*|6.0.*",
+                "orchestra/database": "3.5.*|3.6.*|3.7.*|3.8.*|4.0.*",
+                "orchestra/testbench": "3.5.*|3.6.*|3.7.*|3.8.*|4.0.*",
+                "phpunit/phpunit": "^6.3|^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vkovic\\LaravelCommando\\Providers\\CommandoServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vkovic\\LaravelCommando\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Ković",
+                    "email": "vlada.kovic@gmail.com"
+                }
+            ],
+            "description": "Collection of handy Laravel artisan commands that most projects needs",
+            "keywords": [
+                "artisan",
+                "commands",
+                "console",
+                "laravel"
+            ],
+            "time": "2019-09-19T08:46:57+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
