@@ -32,13 +32,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('About') }}</a>
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('About') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Product') }}</a>
+                            <a class="nav-link" href="{{ route('contact_us') }}">{{ __('Product') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Contact Us') }}</a>
+                            <a class="nav-link" href="{{ route('contact_us') }}">{{ __('Contact Us') }}</a>
                         </li>
                     </ul>
 
@@ -53,25 +53,25 @@
             </div>
         </nav>
         <div id="slider">
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 300px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 300px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 300px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 300px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 300px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
         </div>
 
-        <main class="py-4">
+        <main class="container">
             @yield('content')
         </main>
 
         <footer class="footer border-top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <h2 class="font-weight-bold">Company Information</h2>
                         <p>Improve Cambodian people’s living with Information Technology. We are committed to challenge what other people do not. Deliver a surprised result beyond clients’ expectation with passion and value.</p>
                     </div>
-                    <div class="offset-1 col-lg-3">
+                    <div class="offset-1 col-md-3">
                         <h2 class="font-weight-bold">Follow us</h2>
                         <ul class="nav">
                             <li class="nav-item">
@@ -91,7 +91,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-md-4">
                         <div id="map">
                             {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7817.997470789702!2d104.9379336360596!3d11.551947899174024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf81e10a76f0fdf02!2sPLAN-B%20Cambodia!5e0!3m2!1sen!2skh!4v1582550569804!5m2!1sen!2skh" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe> --}}
                         </div>
@@ -133,8 +133,8 @@
     <script src="{{ asset('js/script.js') }}"></script>
     <script>
         function initMap() {
-            var location = {lat: -25.344, lng: 131.036};
-            var map = new google.maps.Map(document.getElementById('map'), {zoom: 4, center: location});
+            var location = {lat: 11.5518399, lng: 104.9402093};
+            var map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: location});
             var marker = new google.maps.Marker({position: location, map: map});
         }
     </script>
