@@ -15,6 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title')->index()->unique();
+            $table->text('content')->nullable();
+            $table->text('thumbnail')->nullable();
+            $table->unsignedBigInteger('page_id');
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->timestamps();
         });
     }

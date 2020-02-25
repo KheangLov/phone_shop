@@ -19,6 +19,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact-us', 'HomeController@contactUs')->name('contact_us');
+Route::get('/products', 'HomeController@products')->name('products');
+Route::get('/product/details/{id}', 'HomeController@productDetails')->name('product_details');
+Route::post('/contact-us/send', 'HomeController@sendMail')->name('contact_mail_send');
 
 Route::get('/admin', 'AdminController@index')->name('admin_dashboard')->middleware('admin');
 
@@ -32,20 +35,44 @@ Route::put('/admin/user/password/{id}', 'UserController@changePassword')->name('
 Route::get('/admin/user/delete/{id}', 'UserController@delete')->name('user_delete')->middleware('admin');
 Route::post('/admin/user/search', 'UserController@search')->name('user_search')->middleware('admin');
 
-Route::resource('/admin/category', 'CategoryController')->only([
-    'index', 'store', 'update'
-]);
+Route::group(['middleware' => ['admin']], function () {
+    Route::resource('/admin/category', 'CategoryController')->only([
+        'index', 'store', 'update'
+    ]);
+    
+    Route::get('/admin/category/delete/{category}', 'CategoryController@destroy')->name('category.destroy');
+    
+    Route::get('/admin/product', 'ProductController@index')->name('product');
+    Route::get('/admin/product/add', 'ProductController@add')->name('product_add');
+    Route::post('/admin/product/create', 'ProductController@create')->name('product_create');
+    Route::get('/admin/product/edit/{id}', 'ProductController@edit')->name('product_edit');
+    Route::put('/admin/product/update/{id}', 'ProductController@update')->name('product_update');
+    Route::get('/admin/product/delete/{id}', 'ProductController@delete')->name('product_delete');
+    Route::post('/admin/product/category', 'ProductController@add_category')->name('product_cate');
+    
+    Route::post('/admin/images/upload', 'ImageController@upload')->name('images_upload');
+    Route::post('/admin/images/delete', 'ImageController@delete')->name('images_delete');
+    Route::get('/admin/images', 'ImageController@index')->name('images');
 
-Route::get('/admin/category/delete/{category}', 'CategoryController@destroy')->name('category.destroy');
+    Route::get('/admin/email', 'MailController@index')->name('mail_list');
+    Route::get('/admin/email/{id}', 'MailController@detail')->name('mail_detail');
 
-Route::get('/admin/product', 'ProductController@index')->name('product');
-Route::get('/admin/product/add', 'ProductController@add')->name('product_add');
-Route::post('/admin/product/create', 'ProductController@create')->name('product_create');
-Route::get('/admin/product/edit/{id}', 'ProductController@edit')->name('product_edit');
-Route::put('/admin/product/update/{id}', 'ProductController@update')->name('product_update');
-Route::get('/admin/product/delete/{id}', 'ProductController@delete')->name('product_delete');
-Route::post('/admin/product/category', 'ProductController@add_category')->name('product_cate');
+    Route::get('/admin/page', 'PageController@index')->name('page');
+    Route::post('/admin/page/create', 'PageController@create')->name('page_create');
+    Route::put('/admin/page/update/{id}', 'PageController@update')->name('page_update');
+    Route::get('/admin/page/delete/{id}', 'PageController@destroy')->name('page_delete');
 
-Route::post('/admin/images/upload', 'ImageController@upload')->name('images_upload');
-Route::post('/admin/images/delete', 'ImageController@delete')->name('images_delete');
-Route::get('/admin/images', 'ImageController@index')->name('images');
+    Route::get('/admin/page-type', 'PageTypeController@index')->name('page_type');
+    Route::post('/admin/page-type/create', 'PageTypeController@create')->name('page_type_create');
+    Route::put('/admin/page-type/update/{id}', 'PageTypeController@update')->name('page_type_update');
+    Route::get('/admin/page-type/delete/{id}', 'PageTypeController@destroy')->name('page_type_delete');
+
+    Route::get('/admin/post', 'PostController@index')->name('post');
+    Route::post('/admin/post/create', 'PostController@create')->name('post_create');
+    Route::put('/admin/post/update/{id}', 'PostController@update')->name('post_update');
+    Route::get('/admin/post/delete/{id}', 'PostController@destroy')->name('post_delete');
+});
+
+Route::get('/mark-as-read', function() {
+    Auth::user()->unreadNotifications->markAsRead();
+});

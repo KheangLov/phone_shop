@@ -74,18 +74,6 @@
                             </a>
                             <div class="collapse multi-collapse" id="multiCollapseExample1">
                                 <div class="card card-body" style="background-color: #222;">
-                                    <div class="profile-upload text-center mb-4">
-                                        <div class="profile-overlay">
-                                            <div class="profile-pic" id="category_img" style="background-image: url('{{ asset('images/no-image.png') }}');"></div>
-                                            <button type="button" class="btn btn-primary btn-profile-upload" id="btn_category_image">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4">
-                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                                    <circle cx="12" cy="7" r="4"></circle>
-                                                </svg>
-                                            </button>
-                                            <input type="file" name="cate_image" id="category_image" class="d-none">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }}</label>
                                         <input id="cate_name" type="text" class="form-control">
@@ -102,43 +90,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="form-group col-md-12">
-                            <label for="images">{{ __('Images') }}</label>
-                            <button type="button" class="d-block btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">
-                                Open gallery
-                            </button>
-
-                            <div class="modal custom-modal fade bd-example-modal-xl w-100" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl w-100" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="exampleModalLongTitle">Product Images</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="file" name="images[]" id="upload_images" class="d-none" multiple>
-                                        <button type="button" id="btn_upload_images" class="btn btn-primary mb-3 font-weight-bold">
-                                            <i class="fas fa-camera mb-2"></i>
-                                            Upload Image
-                                        </button>
-                                        @if (!empty($images))
-                                            <select id="images-pick" class="image-picker show-html" multiple="multiple" data-limit="5">
-                                                @foreach ($images as $img)
-                                                    <option data-img-src="{{ asset($img->path) }}" data-img-alt="{{ $img->name }}" value="{{ $img->id }}"{{ $img->post_id === $product->id ? ' selected' : '' }}></option>
-                                                @endforeach
-                                            </select>
-                                        @endif
-                                    </div>
-                                    <div class="modal-footer d-flex" id="product_image_model_footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" id="btn_choose_imgs" data-dismiss="modal">Choose</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>

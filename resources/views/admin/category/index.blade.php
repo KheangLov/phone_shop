@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 @if ($edit = true && isset($category))
-                    <form method="POST" action="{{ route('category.update', ['category' => $category->id ?? 0]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('category.update', ['category' => $category->id ?? 0]) }}">
                         @method('PATCH')
                         @csrf
                         <div class="form-group">
@@ -35,7 +35,7 @@
                         </div>
                     </form>
                 @else
-                    <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('category.store') }}">
                         @csrf
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>

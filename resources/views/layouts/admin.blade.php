@@ -45,21 +45,19 @@
                     <span class="link-text">Dashboard</span>
                 </div>
             </a>
-            @if (strtolower(Auth::user()->role->name) === 'admin')
-                <a href="{{ route('user_list') }}" class="sidebar-link">
-                    <div class="inner-link{{ (request()->is('admin/user') || request()->is('admin/user/*')) ? ' active' : '' }}">
-                        <span class="link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user ">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </span>
-                        <span class="link-text">Users</span>
-                    </div>
-                </a>
-            @endif
-            <a href="{{ route('product') }}" class="sidebar-link">
-                <div class="inner-link{{ (request()->is('admin/product') || request()->is('admin/product/*') || request()->is('admin/images') || request()->is('admin/images/*')) ? ' active' : '' }}">
+            <a href="{{ route('user_list') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/user') || request()->is('admin/user/*')) ? ' active' : '' }}">
+                    <span class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user ">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+                    <span class="link-text">Users</span>
+                </div>
+            </a>
+            <a href="{{ route('mail_list') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/email') || request()->is('admin/email/*')) ? ' active' : '' }}">
                     <span class="link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail ">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -67,6 +65,17 @@
                         </svg>
                     </span>
                     <span class="link-text">Emails</span>
+                </div>
+            </a>
+            <a href="{{ route('page') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/page') || request()->is('admin/page/*') || request()->is('admin/page-type/*') || request()->is('admin/page-type')) ? ' active' : '' }}">
+                    <span class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </span>
+                    <span class="link-text">Pages</span>
                 </div>
             </a>
             <a href="{{ route('category.index') }}" class="sidebar-link">
@@ -118,6 +127,8 @@
                                     Users
                                 @elseif (request()->is('admin/category') || request()->is('admin/category/*'))
                                     Categories
+                                @elseif (request()->is('admin/email') || request()->is('admin/email/*'))
+                                    Emails
                                 @else
                                     Dashboard
                                 @endif

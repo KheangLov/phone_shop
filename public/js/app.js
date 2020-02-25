@@ -50799,9 +50799,9 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("span", { staticClass: "ml-1 text-nowrap text-truncate" }, [
-        _vm._v("#" + _vm._s(_vm.notification.data.user_id) + ", "),
-        _c("strong", [_vm._v(_vm._s(_vm.notification.data.user_name))]),
-        _vm._v(", " + _vm._s(_vm.notification.data.messages))
+        _vm._v("#" + _vm._s(_vm.notification.data.email) + ", "),
+        _c("strong", [_vm._v(_vm._s(_vm.notification.data.subject))]),
+        _vm._v(", " + _vm._s(_vm.notification.data.name))
       ])
     ]
   )

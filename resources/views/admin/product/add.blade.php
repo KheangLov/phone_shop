@@ -89,18 +89,6 @@
                             </a>
                             <div class="collapse multi-collapse" id="multiCollapseExample1">
                                 <div class="card card-body" style="background-color: #222;">
-                                    <div class="profile-upload text-center mb-4">
-                                        <div class="profile-overlay">
-                                            <div class="profile-pic" id="category_img" style="background-image: url('{{ asset('images/no-image.png') }}');"></div>
-                                            <button type="button" class="btn btn-primary btn-profile-upload" id="btn_category_image">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4">
-                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                                    <circle cx="12" cy="7" r="4"></circle>
-                                                </svg>
-                                            </button>
-                                            <input type="file" name="cate_image" id="category_image" class="d-none">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label for="name">{{ __('Name') }}</label>
                                         <input id="cate_name" type="text" class="form-control">

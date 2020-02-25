@@ -117,6 +117,7 @@ class ProductController extends Controller
             ->get();
         return view('admin.product.edit', [
             'product' => $product[0],
+            'categories' => $categories,
             'images' => $images
         ]);
     }

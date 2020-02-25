@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Mail\ContactUs;
+use Notification;
+use App\Notifications\UserNotification;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -22,10 +28,45 @@ class HomeController extends Controller
         return view('contact-us');
     }
 
-    public function sendMail()
+    public function products()
     {
-        $name = 'Krunal';
-        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactUs($name));
-        return 'Email was sent';
+        $categories = Category::all();
+        $products = Product::all();
+        return view('products', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
+    }
+
+    public function productDetails($id)
+    {
+        $product = Product::with(['category'])
+            ->where('id', $id)
+            ->get();
+
+        return view('product-detail', [
+            'product' => $product[0]
+        ]);
+    }
+
+    public function sendMail(Request $request)
+    {
+        $objDetails = new \stdClass();
+        $objDetails->name = $request->name;
+        $objDetails->subject = $request->subject;
+        $objDetails->email = $request->email;
+        $objDetails->message = $request->message;
+
+        $details = [
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'email' => $request->email,
+            'message' => $request->message
+        ];
+
+        $admin = User::where('role_id', 1)->get();
+        Mail::to($request->email)->send(new ContactUs($objDetails));
+        Notification::send($admin, new UserNotification($details));
+        return redirect()->route('contact_us')->with('success', 'Email sent!');
     }
 }

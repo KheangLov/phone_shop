@@ -15,6 +15,7 @@ class CreatePageTypesTable extends Migration
     {
         Schema::create('page_types', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }

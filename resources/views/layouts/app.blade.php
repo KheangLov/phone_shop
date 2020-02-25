@@ -18,10 +18,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style="background-color: #f5f5f5;">
+    <div id="loading_page">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+            </div>
+        </div>
+    </div>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}" style="font-size: 26px;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -31,14 +41,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav m-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('About') }}</a>
+                        <li class="nav-item{{ (request()->is('home')) ? ' active' : '' }}">
+                            <a class="nav-link custom-nav-link" href="{{ route('home') }}">{{ __('About') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact_us') }}">{{ __('Product') }}</a>
+                        <li class="nav-item{{ (request()->is('products') || request()->is('product/*')) ? ' active' : '' }}">
+                            <a class="nav-link custom-nav-link" href="{{ route('products') }}">{{ __('Product') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact_us') }}">{{ __('Contact Us') }}</a>
+                        <li class="nav-item{{ (request()->is('contact-us')) ? ' active' : '' }}">
+                            <a class="nav-link custom-nav-link" href="{{ route('contact_us') }}">{{ __('Contact Us') }}</a>
                         </li>
                     </ul>
 
@@ -64,7 +74,7 @@
             @yield('content')
         </main>
 
-        <footer class="footer border-top bg-white">
+        <footer class="footer bg-white">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -112,8 +122,7 @@
                     @else
                         <a href="{{ route('admin_dashboard') }}" class="ml-auto p-2 bd-highlight">Admin</a>
 
-                    {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="p-2 bd-highlight" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -122,7 +131,6 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                    </div> --}}
                     @endguest
                 </div>
             </div>

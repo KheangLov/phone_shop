@@ -29,7 +29,7 @@ class UserNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database', 'broadcast'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -38,13 +38,13 @@ class UserNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
-    }
+    // public function toMail($notifiable)
+    // {
+    //     return (new MailMessage)
+    //         ->line('The introduction to the notification.')
+    //         ->action('Notification Action', url('/'))
+    //         ->line('Thank you for using our application!');
+    // }
 
     /**
      * Get the array representation of the notification.
@@ -55,27 +55,30 @@ class UserNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'messages' => $this->details['body'],
-            'user_id' => $this->details['user_id'],
-            'user_name' => $this->details['user_name']
+            'email' => $this->details['email'],
+            'name' => $this->details['name'],
+            'subject' => $this->details['subject'],
+            'message' => $this->details['message']
         ];
     }
 
     public function toDatabase($notifiable)
     {
         return [
-            'messages' => $this->details['body'],
-            'user_id' => $this->details['user_id'],
-            'user_name' => $this->details['user_name']
+            'email' => $this->details['email'],
+            'name' => $this->details['name'],
+            'subject' => $this->details['subject'],
+            'message' => $this->details['message']
         ];
     }
 
     public function toBroadcast($notifiable)
     {
         return [
-            'messages' => $this->details['body'],
-            'user_id' => $this->details['user_id'],
-            'user_name' => $this->details['user_name']
+            'email' => $this->details['email'],
+            'name' => $this->details['name'],
+            'subject' => $this->details['subject'],
+            'message' => $this->details['message']
         ];
     }
 }

@@ -169,7 +169,6 @@ $(document).ready(function(e) {
     });
 
     $('#slider').slick({
-        dots: true,
         infinite: true,
         slidesToShow: 1,
         adaptiveHeight: true,
@@ -286,15 +285,9 @@ $(document).ready(function(e) {
     });
 
     $("#procate_submit").on("click", function(e) {
-        let image = "";
-        if ($("#category_image").prop("files").length > 0) {
-            image = $("#category_image").prop("files");
-        }
-
         const name = $("#cate_name").val();
         const desc = $("#cate_description").val();
         let formData = new FormData();
-        if (image) formData.append("image", image[0]);
         formData.append("name", name);
         formData.append("description", desc);
 
@@ -547,11 +540,13 @@ $(document).ready(function(e) {
     });
 });
 
-const stringVal = document.getElementById("side-header").innerHTML;
-const newString = stringVal
-    .replace(/([A-Z]+)/g, " $1")
-    .replace(/([A-Z][a-z])/g, " $1");
-document.getElementById("side-header").innerHTML = newString;
+if (document.getElementById("side-header") && document.getElementById("side-header").length > 0) {
+    const stringVal = document.getElementById("side-header").innerHTML;
+    const newString = stringVal
+        .replace(/([A-Z]+)/g, " $1")
+        .replace(/([A-Z][a-z])/g, " $1");
+    document.getElementById("side-header").innerHTML = newString;
+}
 
 const btnProfileEdit = document.getElementById("btn_profile_edit");
 const inpProfileEdit = document.getElementById("profile_edit");
