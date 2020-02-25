@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4 mt-5">
+    <div class="col-md-5 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <h2 class="p-2 w-100 bd-highlight text-truncate">{{ isset($edit) && $edit ? 'Edit' : 'Add' }} Post</h2>
@@ -17,9 +17,33 @@
                     <form method="POST" action="{{ route('post_update', ['id' => $post->id ?? 0]) }}">
                         @method('PATCH')
                         @csrf
+                        <div class="profile-upload text-center mb-4">
+                            <div class="profile-overlay">
+                                <div class="profile-pic" id="profile_bg_image" style="background-image: url('{{ asset('images/no-image.png') }}');"></div>
+                                <button type="button" class="btn btn-primary btn-profile-upload" id="btn_profile_edit" data-toggle="tooltip" data-placement="top" title="Product thumbnail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <input type="file" name="thumbnail" id="profile_edit" class="d-none">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="name">{{ __('Name') }}</label>
-                            <input id="name" type="text" class="form-control" name="name" required value="{{ $post->name ?? '' }}">
+                            <label for="page">{{ __('Page') }}</label>
+                            <select name="page" id="page" class="form-control">
+                                @foreach ($pages as $page)
+                                    <option value="{{ $page->id }}">{{ ucfirst($page->name) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">{{ __('Title') }}</label>
+                            <input id="title" type="text" class="form-control" name="title" required value="{{ $post->title ?? '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">{{ __('Content') }}</label>
+                            <textarea id="content" class="form-control" name="content">{{ $post->content ?? '' }}</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-reg">
@@ -33,9 +57,33 @@
                 @else
                     <form method="POST" action="{{ route('post_create') }}">
                         @csrf
+                        <div class="profile-upload text-center mb-4">
+                            <div class="profile-overlay">
+                                <div class="profile-pic" id="profile_bg_image" style="background-image: url('{{ asset('images/no-image.png') }}');"></div>
+                                <button type="button" class="btn btn-primary btn-profile-upload" id="btn_profile_edit" data-toggle="tooltip" data-placement="top" title="Product thumbnail">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <input type="file" name="thumbnail" id="profile_edit" class="d-none">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label for="name">{{ __('Name') }}</label>
-                            <input id="name" type="text" class="form-control" name="name" required>
+                            <label for="page">{{ __('Page') }}</label>
+                            <select name="page" id="page" class="form-control">
+                                @foreach ($pages as $page)
+                                    <option value="{{ $page->id }}">{{ ucfirst($page->name) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">{{ __('Title') }}</label>
+                            <input id="title" type="text" class="form-control" name="title" required value="{{ $post->title ?? '' }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">{{ __('Content') }}</label>
+                            <textarea id="content" class="form-control" name="content">{{ $post->content ?? '' }}</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-reg">
@@ -47,7 +95,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8 mt-5">
+    <div class="col-md-7 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <div class="row">

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4 mt-5">
+    <div class="col-md-5 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <h2 class="p-2 w-100 bd-highlight text-truncate">{{ isset($edit) && $edit ? 'Edit' : 'Add' }} Page-Type</h2>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8 mt-5">
+    <div class="col-md-7 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <div class="row">

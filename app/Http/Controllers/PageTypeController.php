@@ -24,4 +24,37 @@ class PageTypeController extends Controller
         }
         return view('admin.page.page-type', ['pageTypes' => $pageTypes]);
     }
+
+    public function create(Request $request)
+    {
+        $pageType = PageType::create([
+            'name' => $request->name
+        ]);
+        return redirect()->route('page_type')->with('message', 'Page-Type created!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pageType = PageType::find($id);
+		$pageType->name = $request->name;
+        $pageType->save();
+		$pageType->update();
+		return redirect()
+			->route('page_type')
+			->with('message', 'Page-Type updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $pageType = PageType::find($id);
+        $deleted = $pageType->delete();
+        if ($deleted === 0)
+            return redirect()
+                ->route('page_type')
+                ->with('warning', 'Can\'t delete Page-Type!');
+
+		return redirect()
+			->route('page_type')
+			->with('delete_success', 'Page-Type deleted successfully');
+    }
 }
