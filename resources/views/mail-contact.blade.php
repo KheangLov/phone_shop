@@ -7,9 +7,10 @@
   <title>Contact</title>
 </head>
 <body>
-  <h2>{{ $details->subject }}</h2>
-  <h4>{{ $details->name }}</h4>
-  <h6>{{ $details->email }}</h6>
+  <h2 style="margin-bottom: 15px;">Subject: {{ $details->subject }}</h2>
+  <h4 style="margin-bottom: 15px;">Name: {{ $details->name }}</h4>
+  <h6 style="margin-bottom: 30px;">Email: {{ $details->email }}</h6>
+  <h6 style="margin-bottom: 10px;">Messages:</h6>
   <p>{{ $details->message }}</p>
 </body>
 </html>

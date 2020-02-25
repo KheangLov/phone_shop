@@ -76,7 +76,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Actions</th>
+                                {{-- <th scope="col">Actions</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,7 @@
                                     @php($i++)
                                     <th>{{ $i }}</th>
                                     <td>{{ $page->name }}</td>
-                                    <td>
+                                    {{-- <td>
                                         @if (strtolower($page->name) !== '')
                                             <a href="{{ route('page_type', ['id' => $page->id]) }}" class="btn-action btn-edit" data-toggle="tooltip" data-placement="bottom" title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3 h-5 w-5 mr-4 hover:text-primary cursor-pointer">
@@ -124,7 +124,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

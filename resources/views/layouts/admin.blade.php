@@ -105,6 +105,19 @@
                     <span class="link-text">Products</span>
                 </div>
             </a>
+            <a href="{{ route('product') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/slider')) ? ' active' : '' }}">
+                    <span class="link-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid ">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </span>
+                    <span class="link-text">Silder</span>
+                </div>
+            </a>
         </aside>
 
         <div class="main-wrapper">

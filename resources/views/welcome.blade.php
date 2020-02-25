@@ -67,7 +67,7 @@
         <div class="flex-center position-ref full-height">
             @guest
                 <div class="top-right links">
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                     <a href="{{ route('login') }}">Login</a>
 
                     @if (Route::has('register'))
@@ -76,14 +76,14 @@
                 </div>
             @else
                 <div class="top-right links">
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                     <a href="{{ route('admin_dashboard') }}">Admin</a>
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ config('app.name', 'Laravel') }}
                 </div>
 
                 <div class="links">

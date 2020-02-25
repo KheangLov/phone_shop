@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
+use App\PageType;
+use App\Post;
 use App\User;
 use App\Product;
 use App\Category;
@@ -20,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $pages = Page::with(['pageType', 'posts'])->get();
+        return view('home', ['pages' => $pages]);
     }
 
     public function contactUs()

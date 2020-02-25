@@ -26,15 +26,23 @@ class PostController extends Controller
         }
         return view('admin.page.post', ['pages' => $pages, 'posts' => $posts]);
     }
-    
+
     public function create(Request $request)
     {
-        $post = Post::create([
+        $data = [
             'title' => $request->title,
             'content' => $request->content,
-            'thumbnail' => $request->thumbnail,
             'page_id' => $request->page
-        ]);
+        ];
+
+        if (isset($request->thumbnail)) {
+            $imageName = time() . '.' . $request->thumbnail->extension();
+            $request->profile->move(public_path('images'), $imageName);
+            $img = 'images/' . $imageName;
+            $data['thumbnail'] = $img;
+        }
+
+        $post = Post::create($data);
         return redirect()->route('post')->with('message', 'Post created!');
     }
 
@@ -43,8 +51,15 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
-        $post->thumbnail = $request->thumbnail;
         $post->page_id = $request->page;
+
+        if (isset($request->thumbnail)) {
+            $imageName = time() . '.' . $request->thumbnail->extension();
+            $request->profile->move(public_path('images'), $imageName);
+            $img = 'images/' . $imageName;
+            $post->thumbnail = $img;
+        }
+
         $post->save();
 		$post->update();
 		return redirect()

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-5 mt-5">
+    <div class="col-md-4 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <h2 class="p-2 w-100 bd-highlight text-truncate">{{ isset($edit) && $edit ? 'Edit' : 'Add' }} Post</h2>
@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 @if ($edit = true && isset($post))
-                    <form method="POST" action="{{ route('post_update', ['id' => $post->id ?? 0]) }}">
+                    <form method="POST" action="{{ route('post_update', ['id' => $post->id ?? 0]) }}" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="profile-upload text-center mb-4">
@@ -49,13 +49,13 @@
                             <button type="submit" class="btn btn-primary btn-reg">
                                 {{ __('Update') }}
                             </button>
-                            <a href="{{ route('page') }}" class="btn btn-reg" style="background-color: #ff2211; color: #fff; border-color: #ff2211">
+                            <a href="{{ route('post') }}" class="btn btn-reg" style="background-color: #ff2211; color: #fff; border-color: #ff2211">
                                 {{ __('Cancel') }}
                             </a>
                         </div>
                     </form>
                 @else
-                    <form method="POST" action="{{ route('post_create') }}">
+                    <form method="POST" action="{{ route('post_create') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="profile-upload text-center mb-4">
                             <div class="profile-overlay">
@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 mt-5">
+    <div class="col-md-8 mt-5">
         <div class="card card-custom bg-color">
             <div class="card-header text-nowrap">
                 <div class="row">
@@ -124,6 +124,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Page</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -133,9 +134,10 @@
                                 <tr>
                                     @php($i++)
                                     <th>{{ $i }}</th>
-                                    <td>{{ $post->name }}</td>
+                                    <td>{{ $post->title }}</td>
+                                    <td>{{ $post->page->name }}</td>
                                     <td>
-                                        @if (strtolower($post->name) !== '')
+                                        @if (strtolower($post->title) !== '')
                                             <a href="{{ route('post', ['id' => $post->id]) }}" class="btn-action btn-edit" data-toggle="tooltip" data-placement="bottom" title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3 h-5 w-5 mr-4 hover:text-primary cursor-pointer">
                                                     <path d="M12 20h9"></path>
