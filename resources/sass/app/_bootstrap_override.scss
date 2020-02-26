@@ -35,3 +35,23 @@
         background-color: transparent !important;
     }
 }
+
+.card-header {
+
+    &:first-child {
+        border-radius: 6px 6px 0 0;
+    }
+}
+
+.card-img-top {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.card.card_product {
+    transition: all 0.25s ease-in-out;
+
+    &:hover, &:focus {
+        transform: translateY(-5px);
+    }
+}

@@ -1,7 +1,7 @@
 <div class="row">
     @foreach ($products as $product)
     <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card card_product">
         <img src="{{ asset($product->thumbnail) }}" class="card-img-top" alt="{{ $product->name }}">
         <div class="card-body">
             <a href="{{ route('product_details', ['id' => $product->id]) }}" class="card-title text-decoration-none product_name_link" data-toggle="tooltip" data-placement="bottom" title="{{ ucfirst($product->name) }}">

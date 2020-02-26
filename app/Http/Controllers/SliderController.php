@@ -27,14 +27,13 @@ class SliderController extends Controller
 
     public function create(Request $request)
     {
-        $data = [
-            'name' => $request->name
-        ];
+        $data = [];
         if (isset($request->path)) {
             $imageName = time() . '.' . $request->path->extension();
             $request->path->move(public_path('images/slide'), $imageName);
             $img = 'images/slide/' . $imageName;
             $data['path'] = $img;
+            $data['name'] = $imageName;
         }
 
         $slider = Slider::create($data);
@@ -44,13 +43,13 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $slider = Slider::find($id);
-        $slider->name = $request->name;
 
         if (isset($request->path)) {
             $imageName = time() . '.' . $request->path->extension();
             $request->path->move(public_path('images/slide'), $imageName);
             $img = 'images/slide/' . $imageName;
             $slider->path = $img;
+            $slider->name = $imageName;
         }
 
         $slider->save();

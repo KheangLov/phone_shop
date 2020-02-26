@@ -12,7 +12,7 @@
                 @foreach ($images as $image)
                   @php($i++)
                   <div class="tab-pane fade{{ $i === 1 ? ' show active': '' }}" id="pills-image-{{ $image->id }}" role="tabpanel" aria-labelledby="pills-image-{{ $image->id }}">
-                    <img src="{{ asset($image->path) }}" class="img-fluid" alt="{{ $image->name }}" style="margin-bottom: 0.2rem;">
+                    <img src="{{ asset($image->path) }}" class="img-fluid bg-white" alt="{{ $image->name }}" style="margin-bottom: 0.2rem;">
                   </div>
                 @endforeach
               </div>
@@ -22,7 +22,7 @@
                   @php($i++)
                   <li class="nav-item product_images_item">
                     <a class="nav-link product_images{{ $i === 1 ? ' active': '' }}" id="pills-image-{{ $image->id }}-tab" data-toggle="pill" href="#pills-image-{{ $image->id }}" role="tab" aria-controls="pills-image-{{ $image->id }}" aria-selected="true">
-                      <img src="{{ asset($image->path) }}" class="img-fluid" alt="{{ $image->name }}" style="height: 75px;">
+                      <img src="{{ asset($image->path) }}" class="img-fluid bg-white" alt="{{ $image->name }}" style="height: 75px;">
                     </a>
                   </li>
                 @endforeach
@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-7">
               <h2 class="font-weight-bold text-truncate border-bottom text-warning">{{ ucfirst($product->name) }}</h2>
-              @if ($product->discount)
+              @if ($product->discount && $product->discount != 0)
                 @php($new_price = $product->price - ($product->price * $product->discount) / 100)
                 <h4 class="text-dark text-truncate mt-4" style="text-decoration: line-through;">${{ $product->price }}</h4>
                 <h2 class="text-warning text-truncate">${{ $new_price }}</h2>
@@ -49,8 +49,8 @@
         </div>
         <div class="col-xl-3">
           <div class="card">
-            <div class="card-header">
-              <h2 class="font-weight-bold text-truncate m-0">Suggestion</h2>
+            <div class="card-header bg-dark">
+              <h2 class="font-weight-bold text-truncate m-0 text-white">Suggestion</h2>
             </div>
             <div class="card-body">
               <ul class="nav flex-column">

@@ -4,7 +4,7 @@
   <section class="sect bg-light-gray">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mb-4">
           <h2 class="font-weight-bolder border-bottom">Contact Us</h2>
           @if ($message = Session::get('success'))
             <div class="alert alert-success mb-4 alert-dismissible fade show font-weight-bold" role="alert">
@@ -35,7 +35,7 @@
             <button type="submit" class="btn btn-secondary">Send</button>
           </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
           <h2 class="font-weight-bolder">Shop address:</h2>
           <p>
             16F Floor, Diamond TwinTower, the corner of Street Sopheak Mongkul and Street Koh Pich, Sangkat Tonle Bassac, Khan Chamkarmorn, Phnom Penh

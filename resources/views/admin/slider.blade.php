@@ -29,11 +29,11 @@
                                 <input type="file" name="path" id="profile_edit" class="d-none" value="{{ $slider->path }}">
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
                             <input id="name" type="text" class="form-control" name="name" required value="{{ $slider->name ?? '' }}">
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary btn-reg">
                                 {{ __('Update') }}
                             </button>
@@ -57,13 +57,13 @@
                                 <input type="file" name="path" id="profile_edit" class="d-none">
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
                             <input id="name" type="text" class="form-control" name="name" required>
-                        </div>
-                        <div class="form-group">
+                        </div> --}}
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary btn-reg">
-                                {{ __('Create') }}
+                                {{ __('Upload') }}
                             </button>
                         </div>
                     </form>
