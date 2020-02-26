@@ -31,7 +31,7 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ### Clone the project
 ```
-git clone https://github.com/KheangLov/online_shop.git
+git clone https://github.com/KheangLov/phone_shop.git
 ```
 then
 ```
