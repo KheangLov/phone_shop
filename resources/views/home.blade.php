@@ -14,45 +14,46 @@
   @foreach ($pages as $page)
     @php($i++)
     @php($typeNum = $i % 2)
-    @if (strtolower($page->pageType->name) === 'section')
-      <section class="sect text-center{{ $typeNum === 0 ? 'bg-white' : ' bg-light-gray' }}">
+    @if (strtolower($page->pageType->name) === 'section' && count($page->posts) > 0)
+      <section class="sect text-center{{ $typeNum === 0 ? ' bg-white' : ' bg-light-gray' }}">
         <div class="container">
           <h1 class="font-weight-bolder mb-4 text-capitalize">{{ $page->name }}</h1>
+          @if (!empty($page->posts[0]->title) && strtolower($page->posts[0]->title) !== strtolower($page->name))
+            <h4 class="font-weight-bold text-capitalize">{{ $page->posts[0]->title }}</h4>
+          @endif
           <p>
             {{ $page->posts[0]->content }}
           </p>
+          @if (!empty($page->posts[0]->thumbnail))
+            <img src="{{ asset($page->posts[0]->thumbnail) }}" alt="{{ $page->posts[0]->title }}" class="img-fluid">
+          @endif
         </div>
       </section>
-    @elseif (strtolower($page->pageType->name) === 'grid')
-      <section class="sect text-center{{ $typeNum === 0 ? 'bg-white' : ' bg-light-gray' }}">
+    @elseif (strtolower($page->pageType->name) === 'grid' && count($page->posts) > 0)
+      <section class="sect text-center{{ $typeNum === 0 ? ' bg-white' : ' bg-light-gray' }}">
         <div class="container">
           <h1 class="font-weight-bolder mb-4 text-capitalize">{{ $page->name }}</h1>
           <div class="row">
-            @foreach ($page->posts as $post)
-              <div class="col-md">
+            @for ($i = 0; $i < 3; $i++)
+              <div class="col-md mb-4">
                 <div class="card">
+                  @if (!empty($page->posts[$i]->thumbnail))
+                    <div class="d-block m-auto" style="margin-top: 15px !important;">
+                      <div style="width: 95px; height: 72px; background-image: url({{ asset($page->posts[$i]->thumbnail) }}); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
+                    </div>
+                  @endif
                   <div class="card-body">
-                    <h5 class="card-title text-capitalize">{{ $post->title }}</h5>
+                    <h5 class="card-title text-capitalize">{{ $page->posts[$i]->title }}</h5>
                     <p class="card-text">
-                      {{ $post->content }}
+                      {{ $page->posts[$i]->content }}
                     </p>
                   </div>
                 </div>
               </div>
-            @endforeach
+            @endfor
           </div>
         </div>
       </section>
     @endif
   @endforeach
-  {{-- <section class="sect bg-white text-center">
-    <div class="container">
-      <h1 class="font-weight-bolder mb-4">Our Mission</h1>
-      <p>
-        Welcome to PLAN-B Cambodia where creativity is provided with big surprise 「!」and love「❤」. We understand that technology could make a big difference for your entire business operation. That is why we want to be everyday solution to help your business run successfully. Our team works on every task ranging from small to big projects by carrying with core concepts and values.
-        Started in 2007, we are No. 1 SEO company in Japan. Still we are committed to become a leading digital marketing company in Cambodia.
-      </p>
-    </div>
-  </section> --}}
-
 @endsection

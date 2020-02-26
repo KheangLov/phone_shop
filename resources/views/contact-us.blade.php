@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h2 class="font-weight-bolder">Contact Us</h2>
+          <h2 class="font-weight-bolder border-bottom">Contact Us</h2>
           @if ($message = Session::get('success'))
             <div class="alert alert-success mb-4 alert-dismissible fade show font-weight-bold" role="alert">
               {{ $message }}
@@ -32,7 +32,7 @@
               <label for="message">Message</label>
               <textarea name="message" id="message" class="form-control" cols="5" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-secondary">Send</button>
           </form>
         </div>
         <div class="col-md-4">

@@ -22,6 +22,7 @@ Route::get('/contact-us', 'HomeController@contactUs')->name('contact_us');
 Route::get('/products', 'HomeController@products')->name('products');
 Route::get('/product/details/{id}', 'HomeController@productDetails')->name('product_details');
 Route::post('/contact-us/send', 'HomeController@sendMail')->name('contact_mail_send');
+Route::post('/get-product-by-category', 'HomeController@get_product_by_cate')->name('product_get_product_by_cate');
 
 Route::get('/admin', 'AdminController@index')->name('admin_dashboard')->middleware('admin');
 
@@ -72,10 +73,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::patch('/admin/post/update/{id}', 'PostController@update')->name('post_update');
     Route::get('/admin/post/delete/{id}', 'PostController@destroy')->name('post_delete');
 
-    Route::get('/admin/slider', 'PostController@index')->name('post');
-    Route::post('/admin/slider/create', 'PostController@create')->name('post_create');
-    Route::patch('/admin/slider/update/{id}', 'PostController@update')->name('post_update');
-    Route::get('/admin/slider/delete/{id}', 'PostController@destroy')->name('post_delete');
+    Route::get('/admin/slider', 'SliderController@index')->name('slider');
+    Route::post('/admin/slider/create', 'SliderController@create')->name('slider_create');
+    Route::patch('/admin/slider/update/{id}', 'SliderController@update')->name('slider_update');
+    Route::get('/admin/slider/delete/{id}', 'SliderController@destroy')->name('slider_delete');
 });
 
 Route::get('/mark-as-read', function() {

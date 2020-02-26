@@ -173,7 +173,7 @@ $(document).ready(function(e) {
         slidesToShow: 1,
         adaptiveHeight: true,
         autoplay: true,
-        autoplaySpeed: 3500,
+        autoplaySpeed: 2800,
         prevArrow: "",
         nextArrow: ""
     });
@@ -535,6 +535,23 @@ $(document).ready(function(e) {
             cache: false,
             success: function(data) {
                 $('#user_table').html(data);
+            }
+        });
+    });
+
+    $('.category_link').on('click', function(e) {
+        const id = $(this).attr('data-id');
+        let formData = new FormData();
+        formData.append('id', id);
+        $.ajax({
+            type: "POST",
+            url: "/get-product-by-category",
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                $('#product_wrap').html(data);
             }
         });
     });

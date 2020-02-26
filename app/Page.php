@@ -8,7 +8,9 @@ class Page extends Model
 {
     protected $fillable = [
         'name',
-        'page_type_id'
+        'page_type_id',
+        'status',
+        'position'
     ];
 
     public function pageType()

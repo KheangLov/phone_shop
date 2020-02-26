@@ -82,7 +82,7 @@
                     <div class="row justify-content-center">
                         <div class="form-group col-md-7">
                             <label for="password">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group col-md-7">
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
                         <div class="form-group col-md-7">
                             <button type="submit" class="btn btn-primary btn-reg">

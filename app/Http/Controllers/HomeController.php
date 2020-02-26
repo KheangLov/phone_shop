@@ -8,6 +8,7 @@ use App\Post;
 use App\User;
 use App\Product;
 use App\Category;
+use App\Image;
 use Illuminate\Http\Request;
 use App\Mail\ContactUs;
 use Notification;
@@ -23,7 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pages = Page::with(['pageType', 'posts'])->get();
+        $pages = Page::with(['pageType', 'posts'])
+            ->where('status', 1)
+            ->orderBy('position')
+            ->get();
         return view('home', ['pages' => $pages]);
     }
 
@@ -48,8 +52,17 @@ class HomeController extends Controller
             ->where('id', $id)
             ->get();
 
+        $images = Image::where('product_id', $id)->get();
+
+        $suggests = Product::with(['category'])
+            ->where('id', '!=', $id)
+            ->limit(6)
+            ->get();
+
         return view('product-detail', [
-            'product' => $product[0]
+            'product' => $product[0],
+            'images' => $images,
+            'suggests' => $suggests
         ]);
     }
 
@@ -72,5 +85,16 @@ class HomeController extends Controller
         Mail::to($request->email)->send(new ContactUs($objDetails));
         Notification::send($admin, new UserNotification($details));
         return redirect()->route('contact_us')->with('success', 'Email sent!');
+    }
+
+    public function get_product_by_cate(Request $request)
+    {
+        if ($request->id == 0) {
+            $products = Product::all();
+            return view('product-ajax', ['products' => $products]);
+        }
+
+        $products = Product::where('category_id', (int)$request->id)->get();
+        return view('product-ajax', ['products' => $products]);
     }
 }

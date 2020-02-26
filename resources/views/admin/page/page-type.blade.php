@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<a href="{{ route('page') }}" class="btn btn-lg btn-secondary">Page</a>
+<a href="{{ route('post') }}" class="btn btn-lg btn-secondary">Post</a>
 <div class="row">
     <div class="col-md-5 mt-5">
         <div class="card card-custom bg-color">

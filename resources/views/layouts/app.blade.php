@@ -29,7 +29,7 @@
         </div>
     </div>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-lg">
             <div class="container">
                 <a class="navbar-brand font-weight-bold" href="{{ url('/') }}" style="font-size: 26px;">
                     {{ config('app.name', 'Laravel') }}
@@ -44,8 +44,17 @@
                         <li class="nav-item{{ (request()->is('about')) ? ' active' : '' }}">
                             <a class="nav-link custom-nav-link" href="{{ route('home') }}">{{ __('About') }}</a>
                         </li>
-                        <li class="nav-item{{ (request()->is('products') || request()->is('product/*')) ? ' active' : '' }}">
-                            <a class="nav-link custom-nav-link" href="{{ route('products') }}">{{ __('Product') }}</a>
+                        <li class="nav-item dropdown{{ (request()->is('products') || request()->is('product/*')) ? ' active' : '' }}">
+                            <a class="nav-link custom-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('Product') }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('products') }}">Product List</a>
+                                <div class="dropdown-divider"></div>
+                                @foreach ($products as $prod)
+                                    <a class="dropdown-item text-capitalize" href="{{ route('product_details', ['id' => $prod->id]) }}">{{ $prod->name }}</a>
+                                @endforeach
+                            </div>
                         </li>
                         <li class="nav-item{{ (request()->is('contact-us')) ? ' active' : '' }}">
                             <a class="nav-link custom-nav-link" href="{{ route('contact_us') }}">{{ __('Contact Us') }}</a>
@@ -63,11 +72,11 @@
             </div>
         </nav>
         <div id="slider">
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
-            <div><div style="background-image: url('{{ asset('images/slide/Imprint-1920x400.jpg') }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div></div>
+            @foreach ($sliders as $slider)
+                <div>
+                    <div style="background-image: url('{{ asset($slider->path) }}'); height: 280px; background-size: cover; background-repeat: no-repeat; background-position: center center;"></div>
+                </div>
+            @endforeach
         </div>
 
         <main>
@@ -88,17 +97,17 @@
                         <h2 class="font-weight-bold">Follow us</h2>
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">
+                                <a class="nav-link text-secondary" href="https://www.facebook.com/lovsokheang" target="_blank">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">
+                                <a class="nav-link text-secondary" href="https://www.instagram.com/kheang_lov/" target="_blank">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-secondary" href="#">
+                                <a class="nav-link text-secondary" href="https://www.youtube.com/channel/UCMYBSHJy4UWVpJoTDh50ZpA?view_as=subscriber" target="_blank">
                                     <i class="fa fa-youtube-play"></i>
                                 </a>
                             </li>

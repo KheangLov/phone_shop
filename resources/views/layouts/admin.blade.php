@@ -105,8 +105,8 @@
                     <span class="link-text">Products</span>
                 </div>
             </a>
-            <a href="{{ route('product') }}" class="sidebar-link">
-                <div class="inner-link{{ (request()->is('admin/slider')) ? ' active' : '' }}">
+            <a href="{{ route('slider') }}" class="sidebar-link">
+                <div class="inner-link{{ (request()->is('admin/slider') || request()->is('admin/slider/*')) ? ' active' : '' }}">
                     <span class="link-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid ">
                             <rect x="3" y="3" width="7" height="7"></rect>
@@ -142,6 +142,8 @@
                                     Categories
                                 @elseif (request()->is('admin/email') || request()->is('admin/email/*'))
                                     Emails
+                                @elseif (request()->is('admin/slider') || request()->is('admin/slider/*'))
+                                    Slider
                                 @else
                                     Dashboard
                                 @endif

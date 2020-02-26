@@ -1,0 +1,53 @@
+.product_name_link {
+
+    .product_name {
+        color: $dark;
+
+        &:hover, &:focus {
+            color: $warning;
+        }
+    }
+}
+
+.category_link {
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+.nav-pills {
+
+    .product_images_item {
+
+        .nav-link {
+            &.product_images {
+                padding: 0.2rem;
+
+                &.active {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .suggest_name {
+        max-width: 130px;
+    }
+
+    .suggest_desc {
+        max-width: 130px;
+    }
+}
+
+@media only screen and (max-width: 591px) {
+    .suggest_name {
+        max-width: 175px;
+    }
+
+    .suggest_desc {
+        max-width: 175px;
+    }
+}

@@ -7,11 +7,9 @@
         <h6 class="p-2 w-100 text-truncate"><strong>Email: </strong>{{ json_decode($mail->data)->email }}</h6>
         <span class="p-2 w-100 text-truncate"><strong>Name: </strong>{{ json_decode($mail->data)->name }}</span>
     </div>
-    <div class="card-body text-nowrap card-xs-text-center">
-        <h4>Message:</h4>
-        <p>
-            {{ json_decode($mail->data)->message }}
-        </p>
+    <div class="card-body card-xs-text-center">
+        <h4 class="mb-5">Message:</h4>
+        <pre class="text-break text-white">{{ json_decode($mail->data)->message }}</pre>
     </div>
 </div>
 @endsection

@@ -18,7 +18,9 @@ class PageController extends Controller
         $id = 0;
         if (isset($_GET['id'])) $id = $_GET['id'];
 
-        $pages = Page::with('pageType')->get();
+        $pages = Page::with('pageType')
+            ->orderBy('position')
+            ->get();
         $pageTypes = PageType::all();
         if ($id !== 0) {
             $page = Page::where('id', (int)$id)->get();
@@ -31,7 +33,9 @@ class PageController extends Controller
     {
         $page = Page::create([
             'name' => $request->name,
-            'page_type_id' => $request->page_type
+            'page_type_id' => $request->page_type,
+            'status' => $request->status,
+            'position' => $request->position
         ]);
         return redirect()->route('page')->with('message', 'Page created!');
     }
@@ -39,7 +43,9 @@ class PageController extends Controller
     public function update(Request $request, $id)
     {
         $page = Page::find($id);
-		$page->name = $request->name;
+        $page->name = $request->name;
+        $page->status = $request->status;
+        $page->position = $request->position;
         $page->page_type_id = $request->page_type;
         $page->save();
 		$page->update();

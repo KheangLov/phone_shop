@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<a href="{{ route('page') }}" class="btn btn-lg btn-secondary">Page</a>
+<a href="{{ route('page_type') }}" class="btn btn-lg btn-secondary">Page-Type</a>
 <div class="row">
     <div class="col-md-4 mt-5">
         <div class="card card-custom bg-color">
@@ -19,7 +21,7 @@
                         @csrf
                         <div class="profile-upload text-center mb-4">
                             <div class="profile-overlay">
-                                <div class="profile-pic" id="profile_bg_image" style="background-image: url('{{ asset('images/no-image.png') }}');"></div>
+                                <div class="profile-pic" id="profile_bg_image" style="background-image: url('{{ asset(!empty($post->thumbnail) ? $post->thumbnail : 'images/no-image.png') }}');"></div>
                                 <button type="button" class="btn btn-primary btn-profile-upload" id="btn_profile_edit" data-toggle="tooltip" data-placement="top" title="Product thumbnail">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user w-4 h-4">
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -33,7 +35,7 @@
                             <label for="page">{{ __('Page') }}</label>
                             <select name="page" id="page" class="form-control">
                                 @foreach ($pages as $page)
-                                    <option value="{{ $page->id }}">{{ ucfirst($page->name) }}</option>
+                                    <option value="{{ $page->id }}"{{ $page->id === $post->page_id ? ' selected' : '' }}>{{ ucfirst($page->name) }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -37,8 +37,8 @@ class PostController extends Controller
 
         if (isset($request->thumbnail)) {
             $imageName = time() . '.' . $request->thumbnail->extension();
-            $request->profile->move(public_path('images'), $imageName);
-            $img = 'images/' . $imageName;
+            $request->thumbnail->move(public_path('images/post'), $imageName);
+            $img = 'images/post/' . $imageName;
             $data['thumbnail'] = $img;
         }
 
@@ -55,8 +55,8 @@ class PostController extends Controller
 
         if (isset($request->thumbnail)) {
             $imageName = time() . '.' . $request->thumbnail->extension();
-            $request->profile->move(public_path('images'), $imageName);
-            $img = 'images/' . $imageName;
+            $request->thumbnail->move(public_path('images/post'), $imageName);
+            $img = 'images/post/' . $imageName;
             $post->thumbnail = $img;
         }
 

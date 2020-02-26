@@ -24,7 +24,7 @@
                 {{ $message }}
             </div>
         @endif
-        <div class="table-responsive-xl" id="user_table">
+        <div class="table-responsive" id="user_table">
             <table class="table custom-table text-nowrap text-truncate">
                 <thead>
                     <tr>
@@ -32,7 +32,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Message</th>
+                        <th scope="col" style="max-width: 200px;">Message</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
                                 </a>
                             </td>
                             <td class="text-nowrap text-truncate">{{ json_decode($mail->data)->email }}</td>
-                            <td class="text-nowrap text-truncate">{{ json_decode($mail->data)->message }}</td>
+                            <td class="text-nowrap text-truncate" style="max-width: 200px;">{{ json_decode($mail->data)->message }}</td>
                         </tr>
                     @endforeach
                 </tbody>
