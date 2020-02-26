@@ -68,6 +68,10 @@ class HomeController extends Controller
 
     public function sendMail(Request $request)
     {
+        if (empty($request->name) || empty($request->subject) || empty($request->email) || empty($request->message)) {
+            return redirect()->route('contact_us')->with('danger', 'Fields required!');
+        }
+
         $objDetails = new \stdClass();
         $objDetails->name = $request->name;
         $objDetails->subject = $request->subject;

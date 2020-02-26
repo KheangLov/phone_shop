@@ -14,6 +14,14 @@
               </button>
             </div>
           @endif
+          @if ($message = Session::get('danger'))
+            <div class="alert alert-danger mb-4 alert-dismissible fade show font-weight-bold" role="alert">
+              {{ $message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
           <form method="POST" action="{{ route('contact_mail_send') }}">
             @csrf
             <div class="form-group">
