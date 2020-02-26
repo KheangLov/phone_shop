@@ -58,6 +58,8 @@ class PostController extends Controller
             $request->thumbnail->move(public_path('images/post'), $imageName);
             $img = 'images/post/' . $imageName;
             $post->thumbnail = $img;
+        } else {
+            $post->thumbnail = '';
         }
 
         $post->save();

@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('pages')->insert([
             [
-                'name' => 'our vision',
+                'name' => 'Here’s what sets us apart.',
                 'page_type_id' => 1,
                 'status' => 1,
                 'position' => 0,
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'name' => 'our mission',
+                'name' => 'The first & only nationwide 5G network.',
                 'page_type_id' => 1,
                 'status' => 1,
                 'position' => 1,
@@ -66,10 +66,18 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'name' => 'our services',
+                'name' => 'NEVER SETTLE',
                 'page_type_id' => 2,
                 'status' => 1,
                 'position' => 2,
+                'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+                'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
+            ],
+            [
+                'name' => 'ASUS ROG PHONE',
+                'page_type_id' => 2,
+                'status' => 1,
+                'position' => 3,
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ]
@@ -77,40 +85,45 @@ class DatabaseSeeder extends Seeder
 
         DB::table('posts')->insert([
             [
-                'title' => 'Our vision',
-                'content' => 'As a Japanese company, we focus on quality in our products and services. We strive to provide the best alternative plans in IT solutions.',
+                'title' => 'The first & only nationwide 5G network.',
+                'content' => 'T-Mobile\'s 5G network reaches more cities and towns in America than anyone else.',
                 'page_id' => 1,
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'title' => 'Our mission',
-                'content' => 'We understand that technology could make a big difference for your entire business operation. That is why we want to be everyday solution to help your business run successfully. Our team works on every task ranging from small to big projects by carrying with core concepts and values. Started in 2007, we are No. 1 SEO company in Japan. Still we are committed to become a leading digital marketing company in Cambodia.',
+                'title' => 'NEVER SETTLE',
+                'content' => 'Our goal? To share the best technology with the world, hand-in-hand with you.',
                 'page_id' => 2,
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'title' => 'Digital Marketing',
-                'content' => 'Increase sale and your brandawareness via facebook marketing solutions.',
-                'thumbnail' => 'images/post/1582686750.png',
+                'title' => 'Customer crazed, employee committed.',
+                'content' => 'The moves we\'ve made for our customers and employees haven\'t gone unnoticed.',
                 'page_id' => 3,
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'title' => 'Chatbot',
-                'content' => 'Make Conversation Easier and More Engaged with Chatbot. For More Details.',
-                'thumbnail' => 'images/post/1582688756.png',
+                'title' => 'We\'re about more than dollars and cents.',
+                'content' => 'From disaster relief efforts to renewable energy initiatives, we recognize our responsibility.',
                 'page_id' => 3,
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ],
             [
-                'title' => 'Web Development',
-                'content' => 'Your website is your business appearance. Present yourself as professional and reliable.',
-                'thumbnail' => 'images/post/1582688767.png',
+                'title' => 'We\'re moving beyond telecom.',
+                'content' => 'While our network grows, we’re leading innovation for the mobile web and Internet of Things.',
                 'page_id' => 3,
+                'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+                'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
+            ],
+            [
+                'title' => 'Snapdragon 845 powered ASUS ROG Phone is a real game-changer',
+                'content' => 'The phone has all of the features gamers will want: unprecedented speeds with Gigabit LTE and Multi-Gigabit 60 GHz Wi-Fi, configurable up to a massive 512 GB for plenty of game storage, an advanced cooling system, visual and audio technologies that captivate, and a unique design inspired by the traditional video game console. The Snapdragon 845 supports all of this and more, ensuring that the high-performance ROG Phone lives up to gamers’ unshakable standards.',
+                'page_id' => 4,
+                'thumbnail' => 'images/post/1582734339.png',
                 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
                 'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
             ]
@@ -206,12 +219,6 @@ class DatabaseSeeder extends Seeder
         //     [
         //         'name' => 'huewei',
         //         'path' => 'images/slide/1582693669.jpeg',
-        //         'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-        //         'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
-        //     ],
-        //     [
-        //         'name' => '1582727939.png',
-        //         'path' => 'images/slide/1582727939.png',
         //         'created_at' => $faker->dateTime($max = 'now', $timezone = null),
         //         'updated_at' => $faker->dateTime($max = 'now', $timezone = null)
         //     ]
