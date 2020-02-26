@@ -56,7 +56,7 @@ class HomeController extends Controller
 
         $suggests = Product::with(['category'])
             ->where('id', '!=', $id)
-            ->limit(6)
+            ->limit(5)
             ->get();
 
         return view('product-detail', [
@@ -96,5 +96,12 @@ class HomeController extends Controller
 
         $products = Product::where('category_id', (int)$request->id)->get();
         return view('product-ajax', ['products' => $products]);
+    }
+
+    public function searchProduct()
+    {
+        $search = trim($_GET['search']);
+        $products = Product::whereRaw('LOWER(name) LIKE (?)', ["%{$search}%"])->get();
+        return view('search-product', ['products' => $products]);
     }
 }

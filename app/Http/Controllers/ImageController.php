@@ -17,7 +17,6 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::where('user_id', Auth::user()->id)
-            ->where('product_id', '!=', null)
             ->get();
         return view('admin.photo.index', ['images' => $images]);
     }

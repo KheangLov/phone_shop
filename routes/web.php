@@ -23,6 +23,7 @@ Route::get('/products', 'HomeController@products')->name('products');
 Route::get('/product/details/{id}', 'HomeController@productDetails')->name('product_details');
 Route::post('/contact-us/send', 'HomeController@sendMail')->name('contact_mail_send');
 Route::post('/get-product-by-category', 'HomeController@get_product_by_cate')->name('product_get_product_by_cate');
+Route::get('/search-product', 'HomeController@searchProduct')->name('search_product');
 
 Route::get('/admin', 'AdminController@index')->name('admin_dashboard')->middleware('admin');
 

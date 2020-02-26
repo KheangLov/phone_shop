@@ -18,7 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style="background-color: #f5f5f5;">
-    <div id="loading_page">
+    <div id="loading_page" style="z-index: 999;">
         <div id="loading-center">
             <div id="loading-center-absolute">
                 <div class="object" id="object_one"></div>
@@ -65,12 +65,13 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item text-right">
-                            <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+                            <input type="text" name="search" id="search_products" class="form-control" placeholder="Search..." aria-describedby="button-addon2">
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <div id="slider">
             @foreach ($sliders as $slider)
                 <div>

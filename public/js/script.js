@@ -181,7 +181,7 @@ $(document).ready(function(e) {
     const imagePickerMethod = function() {
         $("#images-pick").imagepicker({
             limit_reached: function() {
-                alert("We are full!");
+                alert("Limit 4!");
             },
             changed: function(select, newValues) {
                 console.log(newValues);
@@ -554,6 +554,13 @@ $(document).ready(function(e) {
                 $('#product_wrap').html(data);
             }
         });
+    });
+
+    $('#search_products').on('keypress',function(e) {
+        const value = this.value;
+        if(e.which == 13) {
+            window.location = `/search-product?search=${value}`;
+        }
     });
 });
 
