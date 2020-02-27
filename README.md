@@ -39,7 +39,7 @@ git checkout -b your_branch_name
 ```
 then
 ```
-cd online_shop
+cd phone_shop
 ```
 
 ### copy .env file from .env.example
