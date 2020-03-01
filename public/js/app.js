@@ -63054,8 +63054,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "04cde1f5f2dba178839e",
-  cluster: "ap1",
+  key: "",
+  cluster: "mt1",
   encrypted: true
 });
 
@@ -63228,9 +63228,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Kheang\laravel\phone_shop\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\Kheang\laravel\phone_shop\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! D:\Kheang\laravel\phone_shop\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! D:\kheang\laravel\phone_shop\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\kheang\laravel\phone_shop\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\kheang\laravel\phone_shop\resources\sass\admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })
